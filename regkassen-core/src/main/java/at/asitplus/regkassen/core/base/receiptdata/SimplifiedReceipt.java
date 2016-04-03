@@ -21,49 +21,49 @@ package at.asitplus.regkassen.core.base.receiptdata;
  * Simple representation of a receipt, only the summed up TAX-SET values are modeled
  */
 public class SimplifiedReceipt {
-    protected Double taxSetNormal;
-    protected Double taxSetErmaessigt1;
-    protected Double taxSetErmaessigt2;
-    protected Double taxSetNull;
-    protected Double taxSetBesonders;
+    protected long taxSetNormal;
+    protected long taxSetErmaessigt1;
+    protected long taxSetErmaessigt2;
+    protected long taxSetNull;
+    protected long taxSetBesonders;
 
-    public Double getTaxSetNormal() {
+    public long getTaxSetNormal() {
         return taxSetNormal;
     }
 
-    public void setTaxSetNormal(Double taxSetNormal) {
+    public void setTaxSetNormal(long taxSetNormal) {
         this.taxSetNormal = taxSetNormal;
     }
 
-    public Double getTaxSetErmaessigt1() {
+    public long getTaxSetErmaessigt1() {
         return taxSetErmaessigt1;
     }
 
-    public void setTaxSetErmaessigt1(Double taxSetErmaessigt1) {
+    public void setTaxSetErmaessigt1(long taxSetErmaessigt1) {
         this.taxSetErmaessigt1 = taxSetErmaessigt1;
     }
 
-    public Double getTaxSetErmaessigt2() {
+    public long getTaxSetErmaessigt2() {
         return taxSetErmaessigt2;
     }
 
-    public void setTaxSetErmaessigt2(Double taxSetErmaessigt2) {
+    public void setTaxSetErmaessigt2(long taxSetErmaessigt2) {
         this.taxSetErmaessigt2 = taxSetErmaessigt2;
     }
 
-    public Double getTaxSetNull() {
+    public long getTaxSetNull() {
         return taxSetNull;
     }
 
-    public void setTaxSetNull(Double taxSetNull) {
+    public void setTaxSetNull(long taxSetNull) {
         this.taxSetNull = taxSetNull;
     }
 
-    public Double getTaxSetBesonders() {
+    public long getTaxSetBesonders() {
         return taxSetBesonders;
     }
 
-    public void setTaxSetBesonders(Double taxSetBesonders) {
+    public void setTaxSetBesonders(long taxSetBesonders) {
         this.taxSetBesonders = taxSetBesonders;
     }
 }

@@ -118,11 +118,11 @@ public class DemoCashBox {
         String el2_cashboxID;
         String el3_receiptID;
         Date el4_timeAndData;
-        double el5_taxSet_NORMAL;
-        double el6_taxSet_ERMAESSIGT1;
-        double el7_taxSet_ERMAESSIGT2;
-        double el8_taxSet_NULL;
-        double el9_taxSet_BESONDERS;
+        long el5_taxSet_NORMAL;
+        long el6_taxSet_ERMAESSIGT1;
+        long el7_taxSet_ERMAESSIGT2;
+        long el8_taxSet_NULL;
+        long el9_taxSet_BESONDERS;
         String el10_encryptedTurnOverValue;
         String el11_certificateSerialNumberOrCompanyAndKeyID;
         String el12_chainValue = "";
@@ -162,11 +162,11 @@ public class DemoCashBox {
             //there is no previous receipt for chain value calculation, the cashboxID is used instead
             el12_chainValue = calculateChainValue(null, rkSuiteOfSignatureDevice);
         } else if (typeOfReceipt == TypeOfReceipt.STANDARD_BELEG) {
-            el5_taxSet_NORMAL = Precision.round(simplifiedReceipt.getTaxSetNormal(), 2);
-            el6_taxSet_ERMAESSIGT1 = Precision.round(simplifiedReceipt.getTaxSetErmaessigt1(), 2);
-            el7_taxSet_ERMAESSIGT2 = Precision.round(simplifiedReceipt.getTaxSetErmaessigt2(), 2);
-            el8_taxSet_NULL = Precision.round(simplifiedReceipt.getTaxSetNull(), 2);
-            el9_taxSet_BESONDERS = Precision.round(simplifiedReceipt.getTaxSetBesonders(), 2);
+            el5_taxSet_NORMAL = simplifiedReceipt.getTaxSetNormal();
+            el6_taxSet_ERMAESSIGT1 = simplifiedReceipt.getTaxSetErmaessigt1();
+            el7_taxSet_ERMAESSIGT2 = simplifiedReceipt.getTaxSetErmaessigt2();
+            el8_taxSet_NULL = simplifiedReceipt.getTaxSetNull();
+            el9_taxSet_BESONDERS = simplifiedReceipt.getTaxSetBesonders();
 
             //update turnover counter by adding all tax sets
             updateTurnOverCounter(simplifiedReceipt);
@@ -175,11 +175,11 @@ public class DemoCashBox {
                 el12_chainValue = calculateChainValue(getStoredReceipts().get(getStoredReceipts().size() - 1).getJwsCompactRepresentation(), rkSuiteOfSignatureDevice);
             }
         } else if (typeOfReceipt == TypeOfReceipt.STORNO_BELEG) {
-            el5_taxSet_NORMAL = Precision.round(simplifiedReceipt.getTaxSetNormal(), 2);
-            el6_taxSet_ERMAESSIGT1 = Precision.round(simplifiedReceipt.getTaxSetErmaessigt1(), 2);
-            el7_taxSet_ERMAESSIGT2 = Precision.round(simplifiedReceipt.getTaxSetErmaessigt2(), 2);
-            el8_taxSet_NULL = Precision.round(simplifiedReceipt.getTaxSetNull(), 2);
-            el9_taxSet_BESONDERS = Precision.round(simplifiedReceipt.getTaxSetBesonders(), 2);
+           el5_taxSet_NORMAL = simplifiedReceipt.getTaxSetNormal();
+           el6_taxSet_ERMAESSIGT1 = simplifiedReceipt.getTaxSetErmaessigt1();
+           el7_taxSet_ERMAESSIGT2 = simplifiedReceipt.getTaxSetErmaessigt2();
+           el8_taxSet_NULL = simplifiedReceipt.getTaxSetNull();
+           el9_taxSet_BESONDERS = simplifiedReceipt.getTaxSetBesonders();
 
             updateTurnOverCounter(simplifiedReceipt);
             el10_encryptedTurnOverValue = CashBoxUtils.base64Encode("STO".getBytes(), false);
@@ -187,11 +187,11 @@ public class DemoCashBox {
                 el12_chainValue = calculateChainValue(getStoredReceipts().get(getStoredReceipts().size() - 1).getJwsCompactRepresentation(), rkSuiteOfSignatureDevice);
             }
         } else if (typeOfReceipt == TypeOfReceipt.TRAINING_BELEG) {
-            el5_taxSet_NORMAL = Precision.round(simplifiedReceipt.getTaxSetNormal(), 2);
-            el6_taxSet_ERMAESSIGT1 = Precision.round(simplifiedReceipt.getTaxSetErmaessigt1(), 2);
-            el7_taxSet_ERMAESSIGT2 = Precision.round(simplifiedReceipt.getTaxSetErmaessigt2(), 2);
-            el8_taxSet_NULL = Precision.round(simplifiedReceipt.getTaxSetNull(), 2);
-            el9_taxSet_BESONDERS = Precision.round(simplifiedReceipt.getTaxSetBesonders(), 2);
+           el5_taxSet_NORMAL = simplifiedReceipt.getTaxSetNormal();
+           el6_taxSet_ERMAESSIGT1 = simplifiedReceipt.getTaxSetErmaessigt1();
+           el7_taxSet_ERMAESSIGT2 = simplifiedReceipt.getTaxSetErmaessigt2();
+           el8_taxSet_NULL = simplifiedReceipt.getTaxSetNull();
+           el9_taxSet_BESONDERS = simplifiedReceipt.getTaxSetBesonders();
 
             //turnover counter is not updated!
 

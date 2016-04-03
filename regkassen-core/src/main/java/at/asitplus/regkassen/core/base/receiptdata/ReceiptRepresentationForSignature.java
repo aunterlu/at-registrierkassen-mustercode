@@ -46,19 +46,19 @@ public class ReceiptRepresentationForSignature {
     protected Date receiptDateAndTime;
 
     @SerializedName("Betrag-Satz-Normal")
-    protected double sumTaxSetNormal;
+    protected long sumTaxSetNormal;
 
     @SerializedName("Betrag-Satz-Ermaessigt-1")
-    protected double sumTaxSetErmaessigt1;
+    protected long sumTaxSetErmaessigt1;
 
     @SerializedName("Betrag-Satz-Ermaessigt-2")
-    protected double sumTaxSetErmaessigt2;
+    protected long sumTaxSetErmaessigt2;
 
     @SerializedName("Betrag-Satz-Null")
-    protected double sumTaxSetNull;
+    protected long sumTaxSetNull;
 
     @SerializedName("Betrag-Satz-Besonders")
-    protected double sumTaxSetBesonders;
+    protected long sumTaxSetBesonders;
 
     @SerializedName("Stand-Umsatz-Zaehler-AES256-ICM")
     protected String encryptedTurnoverValue;
@@ -133,43 +133,43 @@ public class ReceiptRepresentationForSignature {
         this.receiptDateAndTime = receiptDateAndTime;
     }
 
-    public double getSumTaxSetNormal() {
-        return Precision.round(sumTaxSetNormal, 2);
+    public long getSumTaxSetNormal() {
+        return sumTaxSetNormal;
     }
 
-    public void setSumTaxSetNormal(double sumTaxSetNormal) {
+    public void setSumTaxSetNormal(long sumTaxSetNormal) {
         this.sumTaxSetNormal = sumTaxSetNormal;
     }
 
-    public double getSumTaxSetErmaessigt1() {
-        return Precision.round(sumTaxSetErmaessigt1, 2);
+    public long getSumTaxSetErmaessigt1() {
+        return sumTaxSetErmaessigt1;
     }
 
-    public void setSumTaxSetErmaessigt1(double sumTaxSetErmaessigt1) {
+    public void setSumTaxSetErmaessigt1(long sumTaxSetErmaessigt1) {
         this.sumTaxSetErmaessigt1 = sumTaxSetErmaessigt1;
     }
 
-    public double getSumTaxSetErmaessigt2() {
-        return Precision.round(sumTaxSetErmaessigt2, 2);
+    public long getSumTaxSetErmaessigt2() {
+        return sumTaxSetErmaessigt2;
     }
 
-    public void setSumTaxSetErmaessigt2(double sumTaxSetErmaessigt2) {
+    public void setSumTaxSetErmaessigt2(long sumTaxSetErmaessigt2) {
         this.sumTaxSetErmaessigt2 = sumTaxSetErmaessigt2;
     }
 
-    public double getSumTaxSetNull() {
-        return Precision.round(sumTaxSetNull, 2);
+    public long getSumTaxSetNull() {
+        return sumTaxSetNull;
     }
 
-    public void setSumTaxSetNull(double sumTaxSetNull) {
+    public void setSumTaxSetNull(long sumTaxSetNull) {
         this.sumTaxSetNull = sumTaxSetNull;
     }
 
-    public double getSumTaxSetBesonders() {
-        return Precision.round(sumTaxSetBesonders, 2);
+    public long getSumTaxSetBesonders() {
+        return sumTaxSetBesonders;
     }
 
-    public void setSumTaxSetBesonders(double sumTaxSetBesonders) {
+    public void setSumTaxSetBesonders(long sumTaxSetBesonders) {
         this.sumTaxSetBesonders = sumTaxSetBesonders;
     }
 
