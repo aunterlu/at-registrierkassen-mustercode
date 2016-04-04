@@ -69,29 +69,8 @@ public class ReceiptRepresentationForSignature {
     @SerializedName("Sig-Voriger-Beleg")
     protected String signatureValuePreviousReceipt;
 
-    private String cent2euroFormat(long cent) {
-       StringBuffer euro = new StringBuffer(4);
-       if (cent < 0) {
-          euro.append("-");
-          cent = cent * -1;
-       }
-       String c = String.valueOf(cent);
-       if (c.length() == 1) {
-          euro.append("0,0");
-          euro.append(c);
-       } else if (c.length() == 2) {
-          euro.append("0,");
-          euro.append(c);
-       } else {
-          euro.append(c.substring(0, c.length() - 2));
-          euro.append(",");
-          euro.append(c.substring(c.length() - 2, c.length()));
-       }
-       return euro.toString();
-    }
-    
     /**
-     * return a decimal format of "-XXX,XX" euro for the given cent value
+     * return a decimal format of "-XXXXX,XX" euro for the given cent value
      * @param cent
      * @return euro formatted string for the given cent value
      */

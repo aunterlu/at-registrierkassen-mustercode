@@ -95,6 +95,7 @@ public class SimplePDFPrinterModule implements PrinterModule {
             if (receiptPrintType == ReceiptPrintType.OCR) {
                 addOCRCodeToPDF(document, cos, rect, line++, receiptPackage);
             } else {
+               addQRRepCodeToPDF(document, cos, rect, line++, receiptPackage);
                 //create QRCode
                 BufferedImage image = createQRCode(receiptPackage);
                 //add QRCode to PDF document
@@ -129,6 +130,41 @@ public class SimplePDFPrinterModule implements PrinterModule {
             e.printStackTrace();
         }
     }
+
+    protected void addQRRepCodeToPDF(PDDocument doc, PDPageContentStream cos, PDRectangle rect, int line, ReceiptPackage receiptPackage) {
+       try {
+           PDFont font = PDType1Font.HELVETICA;
+
+           //get machine code as QR representation
+           String qrRepresentation = CashBoxUtils.getQRCodeRepresentationFromJWSCompactRepresentation(receiptPackage.getJwsCompactRepresentation());
+
+           //print OCR rep to PDF document
+           int CHARS_PER_LINE = 40;
+           int index = 0;
+           while (index >= 0) {
+               String partOCR;
+               if (qrRepresentation.length() > CHARS_PER_LINE) {
+                   partOCR = qrRepresentation.substring(0, CHARS_PER_LINE);
+                   qrRepresentation = qrRepresentation.substring(CHARS_PER_LINE);
+               } else {
+                   partOCR = qrRepresentation.substring(0);
+                   index = -1;
+               }
+               cos.beginText();
+               cos.setFont(font, 8);
+               cos.moveTextPositionByAmount(20, rect.getHeight() - 20 * (line));
+               cos.drawString(partOCR);
+               cos.endText();
+
+               line++;
+           }
+
+
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+   }
+
 
     protected void addOCRCodeToPDF(PDDocument doc, PDPageContentStream cos, PDRectangle rect, int line, ReceiptPackage receiptPackage) {
         try {
@@ -173,7 +209,7 @@ public class SimplePDFPrinterModule implements PrinterModule {
             String qrCodeRepresentation = CashBoxUtils.getQRCodeRepresentationFromJWSCompactRepresentation(receiptPackage.getJwsCompactRepresentation());
 
             //create QR-Code
-            int size = 128;
+            int size = 64;
 
             Hashtable<EncodeHintType, ErrorCorrectionLevel> hintMap = new Hashtable<EncodeHintType, ErrorCorrectionLevel>();
             hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M);
